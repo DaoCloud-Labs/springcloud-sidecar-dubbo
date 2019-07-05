@@ -5,7 +5,6 @@ server:
   port: ${SERVER_PORT:5678}
 sidecar:
   port: ${SIDECAR_PORT:8081}
-  health-uri: ${SIDECAR_HEALTH_CHECK:http://localhost:8081/health.json}
 eureka:
   client:
     serviceUrl:
