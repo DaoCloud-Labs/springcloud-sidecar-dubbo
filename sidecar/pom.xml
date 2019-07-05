@@ -9,6 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <version>1.0.0</version>
+
+    <packaging>jar</packaging>
+
     <artifactId>sidecar</artifactId>
 
 
@@ -19,4 +23,16 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <configuration>
+                    <repository>daocloud.io/ms_platform/dubbo-${artifactId}</repository>
+                    <tag>${version}</tag>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

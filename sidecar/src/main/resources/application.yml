@@ -1,19 +1,19 @@
 spring:
   application:
-    name: dubbo-consumer-sidecar
+    name: ${APP_NAME:dubbo-consumer-sidecar}
 server:
-  port: 5678
+  port: ${SERVER_PORT:5678}
 sidecar:
-  port: 8081
-  health-uri: http://localhost:8081/health.json
+  port: ${SIDECAR_PORT:8081}
+  health-uri: ${SIDECAR_HEALTH_CHECK:http://localhost:8081/health.json}
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/}
   instance:
     prefer-ip-address: true
 zuul:
   routes:
     all:
       path: /**
-      url: http://localhost:8081
+      url: ${ZUUL_URL:http://localhost:8081}
