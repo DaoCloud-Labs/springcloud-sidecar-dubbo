@@ -44,3 +44,24 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
 ```
+# 打包
+
+```bash
+# 获取源码
+git clone https://github.com/DaoCloud-Labs/springcloud-sidecar-dubbo.git
+# 进入源码根目录
+cd springcloud-sidecar-dubbo
+# 编译项目
+mvn clean package -DskipTests
+# 打包Sidecar项目为Docker镜像
+cd sidecar && mvn dockerfile:build
+```
+
+# 容器运行
+
+```bash
+docker run -e APP_NAME=my-dubbo-app \
+-e EUREKA_URL=http://localhost:8761/eureka \
+-e ZUUL_URL=http://localhost:8081
+daocloud.io/ms_platform/dubbo-sidecar:1.0.0
+```
